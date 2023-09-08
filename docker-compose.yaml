@@ -23,8 +23,9 @@
 version: '3'
 services:
   sim:
+    image: gazebo_sim
     build: ./
-    environment:
+    environment:    
       - DISPLAY=novnc:0.0
     networks:
       - x11
