@@ -1,4 +1,4 @@
-FROM ros:galactic
+FROM ros:humble
 
 SHELL ["/bin/bash", "-c"]
 
@@ -11,7 +11,7 @@ RUN apt-get update --fix-missing && \
                        python3-pip \
                        libeigen3-dev \
                        tmux \
-                       ros-galactic-rviz2
+                       ros-humble-rviz2
 RUN apt-get -y dist-upgrade
 RUN pip3 install transforms3d
 
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y  \
 RUN wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 RUN apt-get update &&\
-    apt-get install -y gz-garden
+    apt-get install -y ros-humble-ros-gz
 
 WORKDIR '/sim_ws'
 ENTRYPOINT ["/bin/bash"]
